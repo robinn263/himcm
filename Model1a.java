@@ -17,7 +17,7 @@ public class Model1a {
 
 		//ask user their climate, for now we will just say 5
 		double climate = 5;
-		//hours of sun for each climate, this needs to be done for 1-7
+		//hours of sun for each climate
 		
 		if (climate==1) {
 			hoursOfCharge = 2927.0;
@@ -41,7 +41,7 @@ public class Model1a {
 			hoursOfCharge =2722.7;
 		}
 		
-		//how long each battery will take to charge fully (10 is a place holder)
+		//how long each battery will take to charge fully 
 				double DSTimeToCharge = 1.18 / (solarPanelPower*hoursOfCharge) * 2;
 				double TTimeToCharge = 2.5 / (solarPanelPower*hoursOfCharge) * 2;
 				double DTimeToCharge = 7.4 / (solarPanelPower*hoursOfCharge) * 2;
