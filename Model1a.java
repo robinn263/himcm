@@ -77,11 +77,9 @@ public class Model1a {
 		
 		//if able to charge
 		if (battery1TimeToCharge <= hoursOfCharge) {
-			System.out.println(DSbatteryOne);
-			System.out.println(TbatteryOne);
-			System.out.println(DbatteryOne);
-			System.out.println(EbatteryOne);
-			System.out.println(PbatteryOne);
+			double findMin = {DSbatteryOne, TbatteryOne, DbatteryOne, EbatteryOne, PbatteryOne};
+			Array.sort(findMin);
+			System.out.println("minimum" + findMin[0]);
 		}
 	}
 		
