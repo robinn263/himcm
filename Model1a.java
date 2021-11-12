@@ -1,24 +1,52 @@
 package introduction;
 
+import java.util.*;
+
 public class Model1a {
-	public static void main (String[] args) {
+	public static void main(String[] args) {
 		continous();
 	}
-		public static void continous () {
+
+	public static void continous () {
 		//this is where kWh would go for continuous (100 is a place holder)
-		double continuouskWh = 100;
+		double continuouskWh = 448.19*365;
+		double solarPanelPower = 2.5;
 		
 		//initializing variables
 		double hoursOfCharge = 0;
-		double battery1 = 0;
-		//how long each battery will take to charge fully (10 is a place holder)
-		double battery1TimeToCharge = 10;
+
 		//ask user their climate, for now we will just say 5
 		double climate = 5;
 		//hours of sun for each climate, this needs to be done for 1-7
-		if (climate==5) {
-			hoursOfCharge = 10;
+		
+		if (climate==1) {
+			hoursOfCharge = 2927.0;
 		}
+		else if (climate==2) {
+			hoursOfCharge = 2626.0;
+		}
+		else if (climate==3) {
+			hoursOfCharge = 2928.9;
+		}
+		else if (climate==4) {
+			hoursOfCharge =2682.2;
+		}
+		else if (climate==5) {
+			hoursOfCharge = 3524.3;
+		}
+		else if (climate==6) {
+			hoursOfCharge = 2677.2;
+		}
+		else if (climate==7) {
+			hoursOfCharge =2722.7;
+		}
+		
+		//how long each battery will take to charge fully (10 is a place holder)
+				double DSTimeToCharge = 1.18 / (solarPanelPower*hoursOfCharge) * 2;
+				double TTimeToCharge = 2.5 / (solarPanelPower*hoursOfCharge) * 2;
+				double DTimeToCharge = 7.4 / (solarPanelPower*hoursOfCharge) * 2;
+				double ETimeToCharge = 10 / (solarPanelPower*hoursOfCharge) * 2;
+				double PTimeToCharge = 13.5 / (solarPanelPower*hoursOfCharge) * 2;
 		
 		//figuring out equation for the Deka Solar
 		double DSkwhPerCycle = 1.18;
@@ -76,12 +104,29 @@ public class Model1a {
 		double PbatteryOne = PbatteryOneUnRound/100;
 		
 		//if able to charge
-		if (battery1TimeToCharge <= hoursOfCharge) {
-			double findMin = {DSbatteryOne, TbatteryOne, DbatteryOne, EbatteryOne, PbatteryOne};
-			Array.sort(findMin);
-			System.out.println("minimum" + findMin[0]);
+		System.out.println(DSbatteryOne + ", " + TbatteryOne + ", " + DbatteryOne + ", " + EbatteryOne + ", " + PbatteryOne);
+		
+		
+		if (DSTimeToCharge <= hoursOfCharge || TTimeToCharge <= hoursOfCharge || DTimeToCharge <= hoursOfCharge || ETimeToCharge <= hoursOfCharge || PTimeToCharge <= hoursOfCharge) {
+			double[] findMin = {DSbatteryOne, TbatteryOne, DbatteryOne, EbatteryOne, PbatteryOne};
+			Arrays.sort(findMin);
+			System.out.println("minimum: " + findMin[0]);
+			if (DSbatteryOne<TbatteryOne && DSbatteryOne<DbatteryOne && DSbatteryOne<EbatteryOne && DSbatteryOne<PbatteryOne) {
+			System.out.println("Deka Solar 8GCC2 6V 198");
+		}
+		else if (TbatteryOne<DSbatteryOne && TbatteryOne<DbatteryOne && TbatteryOne<EbatteryOne && TbatteryOne<PbatteryOne) {
+		System.out.println("Trojan L-16 -SPRE 6V 415");
+		}
+		else if (DbatteryOne<DSbatteryOne && DbatteryOne<TbatteryOne && DbatteryOne<EbatteryOne && DbatteryOne<PbatteryOne) {
+		System.out.println("Discover AES 7.4 kWh");
+		}
+		else if (EbatteryOne<DSbatteryOne && EbatteryOne<TbatteryOne && EbatteryOne<DbatteryOne && EbatteryOne<PbatteryOne) {
+			System.out.println("Electriq PowerPod 2");
+		}
+		else if (PbatteryOne<DSbatteryOne && PbatteryOne<TbatteryOne && PbatteryOne<DbatteryOne && PbatteryOne<EbatteryOne) {
+			System.out.println("Tesla Powerwall+");
 		}
 	}
-		
+	}
 	
 }
