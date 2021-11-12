@@ -5,21 +5,21 @@ import java.util.Scanner;
 
 public class Model1a {
 	public static void main(String[] args) {
-		Scanner userImput  = new Scanner(System.in);
+		Scanner userInput  = new Scanner(System.in);
 		System.out.println("How much continous energy do you use? (please do this in kWh)");
-		double continuouskWh = userImput.nextDouble();
+		double continuouskWh = userInput.nextDouble();
 		
 		System.out.println("How much instantaneous energy do you use? (please do this in kWh)");
-		double instantaneouskWh = userImput.nextDouble();
+		double instantaneouskWh = userInput.nextDouble();
 		
 		System.out.println("What power output do your solar pannels have? (please do this in kWh)");
-		double solarPanelPower = userImput.nextDouble();
+		double solarPanelPower = userInput.nextDouble();
 
 		System.out.println("What climate zone are you in?");
 		System.out.println("climate zone: ");
-		double climate = userImput.nextDouble();
+		double climate = userInput.nextDouble();
 		
-		userImput.close();
+		userInput.close();
 		
 		//initializing variables
 		double hoursOfCharge = 0;
